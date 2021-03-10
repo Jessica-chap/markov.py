@@ -44,17 +44,16 @@ def make_chains(text_string):
     chains = {}
     
     for i in range(len(split_content) -1):
-        # print(split_content[i], split_content[i + 1])
-        #two above to tuple
-        # temp_list = []
-        chains[(split_content[i], split_content[i + 1])] = chains.get((split_content[i], split_content[i + 1]), [])
-        if i < (len(split_content) -1): 
-            chains[(split_content[i], split_content[i + 1])] = split_content[i+2]
-        #if i+1 == i+2 then append into list
-        #add the tuple as a key to the empty dictionary with none value
         
+        if (split_content[i], split_content[i + 1]) in chains:
+            if i < (len(split_content) -2): 
+                chains[(split_content[i], split_content[i + 1])] += [split_content[i+2]]
 
-    print(chains)
+        else:
+            if i < (len(split_content) -2):
+                chains[(split_content[i], split_content[i + 1])] = [split_content[i+2]]
+
+        
     return chains
 
 
