@@ -60,10 +60,27 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
-    words = []
+    # words = []
 
-    # your code goes here
+    # #something like
+    # key_list = chains.keys()
+    # random_key_choice = choice(list(key_list))
+    # words = words.append(random_key_choice)
+    # print(words)
+    key = choice(list(chains.keys()))
+    words = [key[0], key[1]]
+    word = choice(chains[key])
 
+    # Keep looping until we reach a value of None
+    # (which would mean it was the end of our original text)
+    # Note that for long texts (like a full book), this might mean
+    # it would run for a very long time.
+
+    while word is not None:
+        key = (key[1], word)
+        words.append(word)
+        word = choice(chains[key])
+ 
     return ' '.join(words)
 
 
